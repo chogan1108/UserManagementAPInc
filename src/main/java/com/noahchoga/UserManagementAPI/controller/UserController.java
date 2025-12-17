@@ -18,17 +18,20 @@ public class UserController {
     public UserController(UserServiceImp userServiceImp1) {
         this.userServiceImp = userServiceImp1;
     }
+
+    //Endpoint to get all users
     @GetMapping
     public List<User> getAllUsers() {
         return userServiceImp.findAllUsers();
     }
 
+    //Endpoint to get user by id
     @GetMapping("/{id}")
     public Optional<User> getUserById(@PathVariable Long id) {
         return userServiceImp.findUserById(id);
     }
 
-    //Endpoint
+    //Endpoint to Post user
     @PostMapping("/create")
     public void addUser(@RequestBody User user) {
         userServiceImp.addUser(user);
